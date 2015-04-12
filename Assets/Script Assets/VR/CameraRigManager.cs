@@ -185,9 +185,7 @@ public class CameraRigManager : Singleton<CameraRigManager>
 		CopyComponentsFromCamera(leftCamera);
 
 		//Move child objects to the new rig, crosshair, inventory stuff etc
-
 		GameObject mainFrom = null;
-		GameObject inventoryFrom = null;
 		GameObject guiFrom = null;
 
 		if(from == RigState.NONE)
@@ -209,7 +207,7 @@ public class CameraRigManager : Singleton<CameraRigManager>
 			obj.transform.parent = OculusGUICameras.FindChild("RightEyeAnchor").transform;
 		}
 
-		//Now update the new cameras in assetmanager
+
 		MainCamera = OculusMainCameras.FindChild("RightEyeAnchor").GetComponent<Camera>();
 		SecondaryCamera = OculusMainCameras.FindChild("LeftEyeAnchor").GetComponent<Camera>();
 	}
