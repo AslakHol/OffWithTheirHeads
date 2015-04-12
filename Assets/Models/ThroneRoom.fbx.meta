@@ -15,6 +15,7 @@ ModelImporter:
     100014: PillarsWindows
     100016: Throne
     100018: WallsFloorCeiling
+    100020: Flags
     400000: //RootNode
     400002: ThroneRoom_Door_L
     400004: ThroneRoom_Door_R
@@ -25,6 +26,7 @@ ModelImporter:
     400014: PillarsWindows
     400016: Throne
     400018: WallsFloorCeiling
+    400020: Flags
     2300000: ThroneRoom_Door_L
     2300002: ThroneRoom_Door_R
     2300004: ThroneRoom_PillarsWindows
@@ -34,6 +36,7 @@ ModelImporter:
     2300012: PillarsWindows
     2300014: Throne
     2300016: WallsFloorCeiling
+    2300018: Flags
     3300000: ThroneRoom_Door_L
     3300002: ThroneRoom_Door_R
     3300004: ThroneRoom_PillarsWindows
@@ -43,6 +46,7 @@ ModelImporter:
     3300012: PillarsWindows
     3300014: Throne
     3300016: WallsFloorCeiling
+    3300018: Flags
     4300000: ThroneRoom_Walls.001
     4300002: ThroneRoom_Door_R
     4300004: ThroneRoom_Door_L
@@ -52,6 +56,7 @@ ModelImporter:
     4300012: Throne
     4300014: WallsFloorCeiling
     4300016: PillarsWindows
+    4300018: Flags
   materials:
     importMaterials: 1
     materialName: 0
