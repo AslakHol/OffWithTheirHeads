@@ -1,0 +1,112 @@
+fileFormatVersion: 2
+guid: ef8ec3a7e30354446ac8a3b5b2be4c33
+timeCreated: 1428847980
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ThroneRoom_Door_L
+    100004: ThroneRoom_Door_R
+    100006: ThroneRoom_PillarsWindows
+    100008: ThroneRoom_Walls
+    100010: ThroneRoom_Walls.001
+    100012: ThroneRoom_PillarsWindows.001
+    100014: PillarsWindows
+    100016: Throne
+    100018: WallsFloorCeiling
+    400000: //RootNode
+    400002: ThroneRoom_Door_L
+    400004: ThroneRoom_Door_R
+    400006: ThroneRoom_PillarsWindows
+    400008: ThroneRoom_Walls
+    400010: ThroneRoom_Walls.001
+    400012: ThroneRoom_PillarsWindows.001
+    400014: PillarsWindows
+    400016: Throne
+    400018: WallsFloorCeiling
+    2300000: ThroneRoom_Door_L
+    2300002: ThroneRoom_Door_R
+    2300004: ThroneRoom_PillarsWindows
+    2300006: ThroneRoom_Walls
+    2300008: ThroneRoom_Walls.001
+    2300010: ThroneRoom_PillarsWindows.001
+    2300012: PillarsWindows
+    2300014: Throne
+    2300016: WallsFloorCeiling
+    3300000: ThroneRoom_Door_L
+    3300002: ThroneRoom_Door_R
+    3300004: ThroneRoom_PillarsWindows
+    3300006: ThroneRoom_Walls
+    3300008: ThroneRoom_Walls.001
+    3300010: ThroneRoom_PillarsWindows.001
+    3300012: PillarsWindows
+    3300014: Throne
+    3300016: WallsFloorCeiling
+    4300000: ThroneRoom_Walls.001
+    4300002: ThroneRoom_Door_R
+    4300004: ThroneRoom_Door_L
+    4300006: ThroneRoom_Walls
+    4300008: ThroneRoom_PillarsWindows
+    4300010: ThroneRoom_PillarsWindows.001
+    4300012: Throne
+    4300014: WallsFloorCeiling
+    4300016: PillarsWindows
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
