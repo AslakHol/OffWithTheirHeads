@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: 6f808d608d95c48448357ce9a44106c7
-timeCreated: 1428869057
-licenseType: Free
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: CTRL-eye.L
     100002: CTRL-eye.R
@@ -166,7 +164,175 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: iPi Default Take
+      takeName: iPi Default Take
+      firstFrame: 0
+      lastFrame: 232
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: rig
+        weight: 1
+      - path: rig/root
+        weight: 1
+      - path: rig/root/ORG-hips
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-hips
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-hips/DEF-spine
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-thigh.01.L
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-thigh.01.L/DEF-shin.01.L
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-thigh.01.L/DEF-shin.01.L/DEF-foot.L
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-thigh.01.R
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-thigh.01.R/DEF-shin.01.R
+        weight: 1
+      - path: rig/root/ORG-hips/DEF-thigh.01.R/DEF-shin.01.R/DEF-foot.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/DEF-chest
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-neck
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-neck/DEF-head
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-neck/DEF-head/DEF-jaw
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_index.01.L.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_index.01.L.02/DEF-f_index.02.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_index.01.L.02/DEF-f_index.02.L/DEF-f_index.03.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_middle.01.L.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_middle.01.L.02/DEF-f_middle.02.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_middle.01.L.02/DEF-f_middle.02.L/DEF-f_middle.03.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_ring.01.L.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_ring.01.L.02/DEF-f_ring.02.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-f_ring.01.L.02/DEF-f_ring.02.L/DEF-f_ring.03.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-thumb.01.L.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-thumb.01.L.02/DEF-thumb.02.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.L/DEF-upper_arm.01.L/DEF-forearm.01.L/DEF-hand.L/DEF-thumb.01.L.02/DEF-thumb.02.L/DEF-thumb.03.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_index.01.R.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_index.01.R.02/DEF-f_index.02.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_index.01.R.02/DEF-f_index.02.R/DEF-f_index.03.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_middle.01.R.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_middle.01.R.02/DEF-f_middle.02.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_middle.01.R.02/DEF-f_middle.02.R/DEF-f_middle.03.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_ring.01.R.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_ring.01.R.02/DEF-f_ring.02.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-f_ring.01.R.02/DEF-f_ring.02.R/DEF-f_ring.03.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-thumb.01.R.02
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-thumb.01.R.02/DEF-thumb.02.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/DEF-shoulder.R/DEF-upper_arm.01.R/DEF-forearm.01.R/DEF-hand.R/DEF-thumb.01.R.02/DEF-thumb.02.R/DEF-thumb.03.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-eye.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-eye.L/CTRL-eyelidLower.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-eye.L/CTRL-eyelidUpper.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-eye.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-eye.R/CTRL-eyelidLower.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-eye.R/CTRL-eyelidUpper.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-jaw
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-spine/ORG-chest/ORG-neck/ORG-head/CTRL-jaw/CTRL-mouthUpperLip.R.001
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.L/ORG-shin.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.L/ORG-shin.L/ORG-foot.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.L/ORG-shin.L/ORG-foot.L/ORG-toe.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.L/ORG-shin.L/ORG-foot.L/ORG-toe.L/DEF-toe.L
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.R/ORG-shin.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.R/ORG-shin.R/ORG-foot.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.R/ORG-shin.R/ORG-foot.R/ORG-toe.R
+        weight: 1
+      - path: rig/root/ORG-hips/ORG-thigh.R/ORG-shin.R/ORG-foot.R/ORG-toe.R/DEF-toe.R
+        weight: 1
+      - path: Teri_Mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -178,13 +344,11 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -207,5 +371,3 @@ ModelImporter:
   animationType: 2
   additionalBone: 0
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
