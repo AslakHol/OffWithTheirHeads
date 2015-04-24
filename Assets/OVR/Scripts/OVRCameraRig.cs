@@ -177,6 +177,12 @@ public class OVRCameraRig : MonoBehaviour
 			{
 				leftEyeCamera = leftEyeAnchor.gameObject.AddComponent<Camera>();
 			}
+#if UNITY_ANDROID && !UNITY_EDITOR
+			if (leftEyeCamera.GetComponent<OVRPostRender>() == null)
+			{
+				leftEyeCamera.gameObject.AddComponent<OVRPostRender>();
+			}
+#endif
 		}
 
 		if (rightEyeCamera == null)
@@ -186,24 +192,13 @@ public class OVRCameraRig : MonoBehaviour
 			{
 				rightEyeCamera = rightEyeAnchor.gameObject.AddComponent<Camera>();
 			}
-		}
-
 #if UNITY_ANDROID && !UNITY_EDITOR
-		if (leftEyeCamera != null)
-		{
-			if (leftEyeCamera.GetComponent<OVRPostRender>() == null)
-			{
-				leftEyeCamera.gameObject.AddComponent<OVRPostRender>();
-			}
-		}
-		if (rightEyeCamera != null)
-		{
 			if (rightEyeCamera.GetComponent<OVRPostRender>() == null)
 			{
 				rightEyeCamera.gameObject.AddComponent<OVRPostRender>();
 			}
-		}
 #endif
+		}
 	}
 
 	private Transform ConfigureRootAnchor(string name)
@@ -311,7 +306,7 @@ public class OVRCameraRig : MonoBehaviour
 
 		// AA is documented to have no effect in deferred, but it causes black screens.
 		if (cam.actualRenderingPath == RenderingPath.DeferredLighting)
-			OVRManager.instance.eyeTextureAntiAliasing = 0;
+			QualitySettings.antiAliasing = 0;
 
 		return cam;
 	}

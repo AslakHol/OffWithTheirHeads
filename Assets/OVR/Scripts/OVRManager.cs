@@ -24,6 +24,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Text;
 using UnityEngine;
 using Ovr;
 
@@ -135,8 +136,8 @@ public class OVRManager : MonoBehaviour
 				{
 					ipd = ipd,
 					eyeHeight = eyeHeight,
-					eyeDepth = 0f, //TODO
-					neckHeight = 0.0f, // TODO
+					eyeDepth = 0.0805f, //TODO: Load from profile
+					neckHeight = eyeHeight - 0.075f, // TODO: Load from profile
 				};
 #endif
 				_profileIsCached = true;
@@ -391,14 +392,28 @@ public class OVRManager : MonoBehaviour
 	private static WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-	// Get this from Unity on startup so we can call Activity java functions
+	// Get this from Unity on startup so we can call Activity java functions.
 	private static bool androidJavaInit = false;
 	private static AndroidJavaObject activity;
 	private static AndroidJavaClass javaVrActivityClass;
+
 	internal static int timeWarpViewNumber = 0;
 
 	[NonSerialized]
-	private static OVRVolumeControl VolumeController = null;
+	private static OVRVolumeControl volumeController = null;
+	[NonSerialized]
+	private Transform volumeControllerTransform = null;
+
+	/// <summary>
+	/// Occurs when the application is resumed.
+	/// </summary>
+	public static event Action OnApplicationResumed = null;
+
+	/// <summary>
+	/// Occurs before plugin initialized. Used to configure
+	/// VR Mode Parms such as clock locks.
+	/// </summary>
+	public static event Action OnConfigureVrModeParms = null;
 
 	public static void EnterVRMode()
 	{
@@ -408,6 +423,21 @@ public class OVRManager : MonoBehaviour
 	public static void LeaveVRMode()
 	{
 		OVRPluginEvent.Issue(RenderEventType.Pause);
+	}
+
+	public delegate void VrApiEventDelegate( string eventData );
+
+	public static VrApiEventDelegate OnVrApiEvent = null;
+
+	public static void SetVrApiEventDelegate( VrApiEventDelegate d )
+	{
+		OnVrApiEvent = d;
+	}
+
+	// This is just an example of an event delegate.
+	public static void VrApiEventDefaultDelegate( string eventData )
+	{
+		Debug.Log( "VrApiEventDefaultDelegate: " + eventData );
 	}
 #else
 	private static bool ovrIsInitialized;
@@ -467,6 +497,10 @@ public class OVRManager : MonoBehaviour
         }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
+
+		// log the unity version
+		Debug.Log( "Unity Version: " + Application.unityVersion );
+
 		// don't allow the application to run if orientation is not landscape left.
 		if (Screen.orientation != ScreenOrientation.LandscapeLeft)
 		{
@@ -486,11 +520,14 @@ public class OVRManager : MonoBehaviour
 			Input.gyro.enabled = false;
 		}
 		
-		// don't enable antiAliasing on the main window display, it may cause
-		// bad behavior with various tiling controls.
+		// NOTE: On Adreno Lollipop, it is an error to have antiAliasing set on the
+		// main window surface with front buffer rendering enabled. The view will
+		// render black.
+		// On Adreno KitKat, some tiling control modes will cause the view to render
+		// black.
 		if (QualitySettings.antiAliasing > 1)
 		{
-			Debug.LogError("*** Main Display should have 0 samples ***");
+			Debug.LogError("*** Antialiasing must be disabled for Gear VR ***");
 		}
 
 		// we sync in the TimeWarp, so we don't want unity
@@ -511,7 +548,14 @@ public class OVRManager : MonoBehaviour
 			javaVrActivityClass = new AndroidJavaClass("com.oculusvr.vrlib.VrActivity");
 			// Prepare for the RenderThreadInit()
 			SetInitVariables(activity.GetRawObject(), javaVrActivityClass.GetRawClass());
-			
+
+#if USE_ENTITLEMENT_CHECK
+			AndroidJavaObject entitlementChecker = new AndroidJavaObject("com.oculus.svclib.OVREntitlementChecker");
+			entitlementChecker.CallStatic("doAutomatedCheck", activity);
+#else
+			Debug.Log( "Inhibiting Entitlement Check!" );
+#endif
+
 			androidJavaInit = true;
 		}
 
@@ -607,14 +651,6 @@ public class OVRManager : MonoBehaviour
 		display.flipInput = isD3d;
 
 		StartCoroutine(CallbackCoroutine());
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-		if (VolumeController != null)
-		{
-			OVRPose pose = OVRManager.display.GetHeadPose();
-			VolumeController.UpdatePosition(pose.orientation, pose.position);
-		}
-#endif
 	}
 
 	private void OnDisable()
@@ -632,6 +668,7 @@ public class OVRManager : MonoBehaviour
 			ovrIsInitialized = false;
 		}
 #else
+		// NOTE: The coroutines will also be stopped when the object is destroyed.
 		StopAllCoroutines();
 #endif
 	}
@@ -639,6 +676,12 @@ public class OVRManager : MonoBehaviour
 	private void Start()
 	{
 #if UNITY_ANDROID && !UNITY_EDITOR
+		// Configure app-specific vr mode parms such as clock frequencies
+		if ( OnConfigureVrModeParms != null )
+		{
+			OnConfigureVrModeParms();
+		}
+
 		// NOTE: For Android, the resolution should be the same for both left and right eye
 		OVRDisplay.EyeRenderDesc leftEyeDesc = OVRManager.display.GetEyeRenderDesc(OVREye.Left);
 		Vector2 resolution = leftEyeDesc.resolution;
@@ -647,6 +690,17 @@ public class OVRManager : MonoBehaviour
 		// This will trigger the init on the render thread
 		InitRenderThread();
 #endif
+	}
+
+	public enum VrApiEventStatus
+	{
+		ERROR_INTERNAL = -2,		// queue isn't created, etc.
+		ERROR_INVALID_BUFFER = -1,	// the buffer passed in was invalid
+		NOT_PENDING = 0,			// no event is waiting
+		PENDING,					// an event is waiting
+		CONSUMED,					// an event was pending but was consumed internally
+		BUFFER_OVERFLOW,			// an event is being returned, but it could not fit into the buffer
+		INVALID_JSON				// there was an error parsing the JSON data
 	}
 
 	private void Update()
@@ -723,10 +777,39 @@ public class OVRManager : MonoBehaviour
 		display.Update();
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-		if (VolumeController != null)
+		if (volumeController != null)
 		{
-			OVRPose pose = OVRManager.display.GetHeadPose();
-			VolumeController.UpdatePosition(pose.orientation, pose.position);
+			if (volumeControllerTransform == null)
+			{
+				if (gameObject.GetComponent<OVRCameraRig>() != null)
+				{
+					volumeControllerTransform = gameObject.GetComponent<OVRCameraRig>().centerEyeAnchor;
+				}
+			}
+			volumeController.UpdatePosition(volumeControllerTransform);
+		}
+
+		// Service VrApi events
+		// If this code is not called, internal VrApi events will never be pushed to the internal event queue.
+		{
+			Int32 maxDataSize = 4096;
+			StringBuilder sb = new StringBuilder( maxDataSize );
+			VrApiEventStatus pendingResult = (VrApiEventStatus)OVR_GetNextPendingEvent( sb, (uint)maxDataSize );
+			while ( pendingResult >= VrApiEventStatus.PENDING )
+			{
+				if ( pendingResult == VrApiEventStatus.PENDING )
+				{
+					if ( OnVrApiEvent != null )
+					{
+						OnVrApiEvent( sb.ToString() );
+					}
+					else
+					{
+						Debug.Log( "No OnVrApiEvent delegate set!" );
+					}
+				}
+				pendingResult = (VrApiEventStatus)OVR_GetNextPendingEvent( sb, (uint)maxDataSize );
+			}
 		}
 #endif
 	}
@@ -766,6 +849,11 @@ public class OVRManager : MonoBehaviour
 	{
 		yield return null; // delay 1 frame to allow Unity enough time to create the windowSurface
 
+		if (OnApplicationResumed != null)
+		{
+			OnApplicationResumed();
+		}
+
 		EnterVRMode();
 	}
 
@@ -796,14 +884,14 @@ public class OVRManager : MonoBehaviour
 	/// </summary>
 	private static void InitVolumeController()
 	{
-		if (VolumeController == null)
+		if (volumeController == null)
 		{
 			Debug.Log("Creating volume controller...");
 			// Create the volume control popup
 			GameObject go = GameObject.Instantiate(Resources.Load("OVRVolumeController")) as GameObject;
 			if (go != null)
 			{
-				VolumeController = go.GetComponent<OVRVolumeControl>();
+				volumeController = go.GetComponent<OVRVolumeControl>();
 			}
 			else
 			{
@@ -916,5 +1004,7 @@ public class OVRManager : MonoBehaviour
 	private static extern bool OVR_GetPlayerEyeHeight(ref float eyeHeight);
 	[DllImport(LibOVR)]
 	private static extern bool OVR_GetInterpupillaryDistance(ref float interpupillaryDistance);
+	[DllImport(LibOVR)]
+	private static extern int OVR_GetNextPendingEvent( StringBuilder sb, uint bufferSize );
 #endif
 }

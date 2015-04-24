@@ -1446,7 +1446,7 @@ namespace Ovr
 
         // Used to return color result to avoid per-frame allocation.
         private byte[] LatencyTestRgb = new byte[3];
-
+        
         // -----------------------------------------------------------------------------------
         // Static Methods
 
@@ -1597,7 +1597,7 @@ namespace Ovr
 
         // -----------------------------------------------------------------------------------
         // **** Constructor
-
+        
         /// <summary>
         /// Creates an HMD and the underlying native ovrHmd pointer at the given index.
         /// Index can [0 .. ovrHmd_Detect()-1]. Index mappings can cange after each ovrHmd_Detect call.
@@ -1617,7 +1617,7 @@ namespace Ovr
             this.HmdPtr = hmdPtr;
             IsUserAllocated = true;
         }
-
+        
         /// <summary>
         /// Creates a 'fake' HMD used for debugging only. This is not tied to specific hardware,
         /// but may be used to debug some of the related rendering.
@@ -1663,7 +1663,7 @@ namespace Ovr
         }
 
         /// <summary>
-        /// Platform specific function to specify the application window whose output will be
+        /// Platform specific function to specify the application window whose output will be 
         /// displayed on the HMD. Only used if the ovrHmdCap_ExtendDesktop flag is false.
         ///   Windows: SwapChain associated with this window will be displayed on the HMD.
         ///            Specify 'destMirrorRect' in window coordinates to indicate an area
@@ -1685,7 +1685,7 @@ namespace Ovr
         {
             return ovrHmd_GetEnabledCaps(HmdPtr);
         }
-
+        
         /// <summary>
         /// Modifies capability bits described by ovrHmdCaps that can be modified,
         /// such as ovrHmdCap_LowPersistance.
@@ -1714,7 +1714,7 @@ namespace Ovr
 
         //-------------------------------------------------------------------------------------
         // ***** Tracking Interface
-
+        
         /// <summary>
         /// All tracking interface functions are thread-safe, allowing tracking state to be sampled
         /// from different threads.
@@ -1766,7 +1766,7 @@ namespace Ovr
 
         //-------------------------------------------------------------------------------------
         // ***** Graphics Setup
-
+        
         /// <summary>
         /// Calculates the recommended texture size for rendering a given eye within the HMD
         /// with a given FOV cone. Higher FOV will generally require larger textures to
@@ -1851,7 +1851,7 @@ namespace Ovr
             {
                 raw[i] = eyeTexture[i].ToRaw();
             }
-
+            
             ovrHmd_EndFrame(HmdPtr, renderPose, raw);
         }
 
@@ -2445,7 +2445,7 @@ namespace Ovr
                    [Out] out HSWDisplayState hasWarningState);
         [DllImport(LibFile, CallingConvention = CallingConvention.Cdecl)]
         private static extern sbyte ovrHmd_DismissHSWDisplay(IntPtr hmd);
-
+        
         // -----------------------------------------------------------------------------------
         // ***** Property Access
         [DllImport(LibFile, CallingConvention = CallingConvention.Cdecl)]

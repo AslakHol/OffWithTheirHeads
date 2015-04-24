@@ -189,7 +189,7 @@ public class OVRDisplay
 
 		return state.HeadPose.ThePose.ToPose();
 #else
-		float px = 0, py = 0, pz = 0, ow = 0, ox = 0, oy = 0, oz = 0;
+		float px = 0.0f, py = 0.0f, pz = 0.0f, ow = 0.0f, ox = 0.0f, oy = 0.0f, oz = 0.0f;
 
 		double atTime = Time.time + predictionTime;
 		OVR_GetCameraPositionOrientation(ref  px, ref  py, ref  pz,
@@ -204,7 +204,7 @@ public class OVRDisplay
 	}
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-	private float w = 0, x = 0, y = 0, z = 0, fov = 90f;
+	private float w = 0.0f, x = 0.0f, y = 0.0f, z = 0.0f, fov = 90.0f;
 #endif
 
 	/// <summary>
@@ -235,7 +235,13 @@ public class OVRDisplay
 
 		float eyeOffsetX = 0.5f * OVRManager.profile.ipd;
 		eyeOffsetX = (eye == OVREye.Left) ? -eyeOffsetX : eyeOffsetX;
-		Vector3 pos = rot * new Vector3(eyeOffsetX, 0.0f, 0.0f);
+
+		float neckToEyeHeight = OVRManager.profile.eyeHeight - OVRManager.profile.neckHeight;
+		Vector3 headNeckModel = new Vector3(0.0f, neckToEyeHeight, OVRManager.profile.eyeDepth);
+		Vector3 pos = rot * (new Vector3(eyeOffsetX, 0.0f, 0.0f) + headNeckModel);
+		
+		// Subtract the HNM pivot to avoid translating the camera when level
+		pos -= headNeckModel;
 
 		return new OVRPose
 		{
@@ -495,13 +501,13 @@ public class OVRDisplay
 				distortionCaps &= ~(uint)Ovr.DistortionCaps.HqDistortion;
 			}
 	
-			if (QualitySettings.activeColorSpace == ColorSpace.Linear && !OVRManager.instance.hdr)
+			if (OVRManager.instance.hdr)
 			{
-				distortionCaps |= (uint)Ovr.DistortionCaps.SRGB;
+				distortionCaps &= ~(uint)Ovr.DistortionCaps.SRGB;
 			}
 			else
 			{
-				distortionCaps &= ~(uint)Ovr.DistortionCaps.SRGB;
+				distortionCaps |= (uint)Ovr.DistortionCaps.SRGB;
 			}
 
 			prevAntiAliasing = QualitySettings.antiAliasing;
