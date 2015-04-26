@@ -14,12 +14,19 @@ public class GameLogic : MonoBehaviour {
     NodActor targetPreviousFrame;
     float targetTimer;
 
+    //Public for debug reasons
+    public List<float> previousXDeltas;
 
+    public float currentXDeltaSmooth;
+
+    void Start(){
+        StartCoroutine(DeltaAngleUpdater());
+    }
 
     void Update(){
         NodActionInstance target = GetCurrentTarget();
 
-        if (target == null || GetNodAngleDelta() > 1f){
+        if (target == null || currentXDeltaSmooth > 1f){
             targetPreviousFrame = null;
             targetTimer = 0f;
         }
@@ -59,8 +66,28 @@ public class GameLogic : MonoBehaviour {
         return null;
     }
 
-    float GetNodAngleDelta(){
-        return 0f;
+    IEnumerator DeltaAngleUpdater(){
+        float previousXAngle = 0f;
+        while (true){
+            float thisXAngle = gestureController.transform.eulerAngles.x;
+            if (thisXAngle > 180f){
+                thisXAngle = 360f - thisXAngle;
+            }
+
+            if (previousXDeltas.Count > 20){
+                previousXDeltas.RemoveAt(0);
+            }
+            previousXDeltas.Add(Mathf.Abs(thisXAngle - previousXAngle));
+
+            currentXDeltaSmooth = 0f;
+            for (int i = 0; i < previousXDeltas.Count; i++){
+                currentXDeltaSmooth += previousXDeltas[i];
+            }
+            currentXDeltaSmooth /= previousXDeltas.Count;
+
+            previousXAngle = thisXAngle;
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     [System.Serializable]
