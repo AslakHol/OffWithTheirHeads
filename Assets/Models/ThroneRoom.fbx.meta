@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: ef8ec3a7e30354446ac8a3b5b2be4c33
-timeCreated: 1428847980
-licenseType: Free
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
     100002: ThroneRoom_Door_L
@@ -81,16 +79,14 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -113,5 +109,3 @@ ModelImporter:
   animationType: 0
   additionalBone: 0
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
