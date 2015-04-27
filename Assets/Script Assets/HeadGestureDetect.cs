@@ -80,7 +80,7 @@ public class HeadGestureDetect : MonoBehaviour
 		// Head held high for too long
 		if (tiltUp && countdown > timeOut)
 		{
-			Debug.Log("head held high too long");
+//			Debug.Log("head held high too long");
 			tiltUp = false;
 			baselineX = pitch;
 			return;
@@ -89,7 +89,7 @@ public class HeadGestureDetect : MonoBehaviour
 		// Head held low for too long
 		if (tiltDown && countdown > timeOut)
 		{
-			Debug.Log("head held low too long");
+//			Debug.Log("head held low too long");
 			tiltDown = false;
 			baselineX = pitch;
 			return;
@@ -98,7 +98,7 @@ public class HeadGestureDetect : MonoBehaviour
 		// Head held left for too long
 		if (turnLeft && countdown > timeOut)
 		{
-			Debug.Log("head held left too long");
+//			Debug.Log("head held left too long");
 			turnLeft = false;
 			baselineY = yaw;
 			return;
@@ -107,7 +107,7 @@ public class HeadGestureDetect : MonoBehaviour
 		// Head held right for too long
 		if (turnRight && countdown > timeOut)
 		{
-			Debug.Log("head held right too long");
+//			Debug.Log("head held right too long");
 			turnRight = false;
 			baselineY = yaw;
 			return;
